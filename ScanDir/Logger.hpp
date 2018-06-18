@@ -6,11 +6,12 @@
 class Logger
 {
 public:
+    explicit Logger() {}
     explicit Logger(const char* a_pFile) ;
-    ~Logger();
+    virtual ~Logger();
 
-    void Log(const char* a_pParent, const char* a_pChild);
-    void Log(const char* a_pStr);
+    virtual void Log(const char* a_pParent, const char* a_pChild);
+    virtual void Log(const char* a_pStr);
 
 private:
     std::ofstream m_Output;

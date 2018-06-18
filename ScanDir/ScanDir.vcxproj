@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{A40001DA-9E87-4777-93F5-248174789462}</ProjectGuid>
     <RootNamespace>ScanDir</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -72,6 +72,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir)Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(MSBuildProjectDirectory)\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(MSBuildProjectDirectory)\3rdParty\Lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -89,6 +93,9 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>sqlite3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -126,6 +133,7 @@
     <ClCompile Include="ProcesserPROJ.cpp" />
     <ClCompile Include="Scaner.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="SqliteLogger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnalyserBase.hpp" />
@@ -139,6 +147,7 @@
     <ClInclude Include="ProcesserHeader.hpp" />
     <ClInclude Include="ProcesserPROJ.hpp" />
     <ClInclude Include="Scaner.hpp" />
+    <ClInclude Include="SqliteLogger.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
