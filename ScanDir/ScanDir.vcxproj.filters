@@ -13,5 +13,81 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Filters">
+      <UniqueIdentifier>{756bd3e2-293c-478e-9fdb-5e1f33b7425c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Analysers">
+      <UniqueIdentifier>{0d2f419e-7dfc-4696-976b-93aa19b4c359}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Processers">
+      <UniqueIdentifier>{b079e150-f70d-48bb-ac37-2fe0cdae13de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger">
+      <UniqueIdentifier>{861a1b1e-0a2f-4c65-b94a-e373d7b63b99}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Scaner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FilterBuild.cpp">
+      <Filter>Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="AnalyserBuild.cpp">
+      <Filter>Analysers</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcesserHeader.cpp">
+      <Filter>Processers</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcesserCPP.cpp">
+      <Filter>Processers</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcesserPROJ.cpp">
+      <Filter>Processers</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Scaner.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterBase.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterBuild.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileInfo.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnalyserBase.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnalyserBuild.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcesserBase.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcesserHeader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcesserCPP.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcesserPROJ.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

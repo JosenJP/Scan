@@ -69,13 +69,19 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir)Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -111,6 +117,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnalyserBuild.cpp" />
+    <ClCompile Include="FileInfo.cpp" />
+    <ClCompile Include="FilterBuild.cpp" />
+    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="ProcesserCPP.cpp" />
+    <ClCompile Include="ProcesserHeader.cpp" />
+    <ClCompile Include="ProcesserPROJ.cpp" />
+    <ClCompile Include="Scaner.cpp" />
+    <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AnalyserBase.hpp" />
+    <ClInclude Include="AnalyserBuild.hpp" />
+    <ClInclude Include="FileInfo.hpp" />
+    <ClInclude Include="FilterBase.hpp" />
+    <ClInclude Include="FilterBuild.hpp" />
+    <ClInclude Include="Logger.hpp" />
+    <ClInclude Include="ProcesserBase.hpp" />
+    <ClInclude Include="ProcesserCPP.hpp" />
+    <ClInclude Include="ProcesserHeader.hpp" />
+    <ClInclude Include="ProcesserPROJ.hpp" />
+    <ClInclude Include="Scaner.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
