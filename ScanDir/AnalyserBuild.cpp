@@ -5,7 +5,7 @@
 #include "ProcesserHeader.hpp"
 #include "ProcesserCPP.hpp"
 #include "ProcesserPROJ.hpp"
-#include "Logger.hpp"
+#include "SqliteLogger.hpp"
 
 AnalyserBuild::AnalyserBuild()
 {
@@ -136,25 +136,25 @@ void AnalyserBuild::GetProcessers(void)
     //Set logger for processer
     if (m_LogPath.length() > 0)
     {
-        std::string l_Str = m_LogPath + std::string("\\");
+        std::string l_DBPath = m_LogPath + std::string("\\DependencyLib.db");
         if (NULL != m_pProcHeader)
         {
-            std::string l_LogHeader = l_Str + std::string("Header.txt");
-            m_pLoggerHeader = new Logger(l_LogHeader.c_str());
+            //std::string l_DBPath = l_Str + std::string("Header");
+            m_pLoggerHeader = new SQLiteLogger(l_DBPath.c_str(), "Header");
             m_pProcHeader->SetLogger(m_pLoggerHeader);
         }
 
         if (NULL != m_pProcCPP)
         {
-            std::string l_LogCpp = l_Str + std::string("Cpp.txt");
-            m_pLoggerCPP = new Logger(l_LogCpp.c_str());
+            //std::string l_LogCpp = l_Str + std::string("Cpp.txt");
+            m_pLoggerCPP = new SQLiteLogger(l_DBPath.c_str(), "CPP");
             m_pProcCPP->SetLogger(m_pLoggerCPP);
         }
 
         if (NULL != m_pProcPROJ)
         {
-            std::string l_LogProj = l_Str + std::string("Proj.txt");
-            m_pLoggerPROJ = new Logger(l_LogProj.c_str());
+            //std::string l_LogProj = l_Str + std::string("Proj");
+            m_pLoggerPROJ = new SQLiteLogger(l_DBPath.c_str(), "Project");
             m_pProcPROJ->SetLogger(m_pLoggerPROJ);
         }
     }

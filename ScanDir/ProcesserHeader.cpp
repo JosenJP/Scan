@@ -60,7 +60,7 @@ void ProcesserHeader::Process(const char* a_pFile, const char* a_pFileName)
             {
                 l_Header = l_Line.substr(l_StartPos + 1, l_EndPos - (l_StartPos + 1));
 
-                std::cout << "File " << a_pFileName << " contains " << l_Header << std::endl;
+                //std::cout << "File " << a_pFileName << " contains " << l_Header << std::endl;
 
                 if (NULL != m_pLogger)
                 {

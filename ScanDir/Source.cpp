@@ -11,7 +11,7 @@ int main()
     Scaner l_Scaner;
     FilterBuild l_Filter;
     AnalyserBuild l_Analyser;
-    l_Analyser.SetLogPath("H:\\Coding\\C++");
+    l_Analyser.SetLogPath("H:\\Coding\\C++\\ScanDir\\ScanDir\\3rdParty");
 
     l_Scaner.SetFilter(&l_Filter);
     l_Scaner.SetAnalyser(&l_Analyser);

@@ -52,11 +52,11 @@ void ProcesserPROJ::Process(const char* a_pFile, const char* a_pFileName)
             {
                 l_CppFile = l_Line.substr(l_StartPos + 1 , ((l_EndPos - 2) - (l_StartPos + 1))); //-2 is to remove the space at the end and " .
 
-                std::cout << "Project " << a_pFileName << " contains " << l_CppFile << std::endl;
+                //std::cout << "Project " << a_pFileName << " contains " << l_CppFile << std::endl;
 
                 if (NULL != m_pLogger)
                 {
-                    m_pLogger->Log(a_pFileName, l_CppFile.c_str());
+                    m_pLogger->Log(a_pFile, l_CppFile.c_str());
                 }
             }
         }

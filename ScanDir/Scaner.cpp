@@ -64,7 +64,7 @@ void Scaner::Scan(const char* a_pDir)
                 if ((NULL == m_pFilter) ||
                     ((NULL != m_pFilter) && m_pFilter->IsGoodFile(l_pEnt->d_name, l_FileType)))
                 {
-                    std::cout << l_pEnt->d_name << std::endl;
+                    //std::cout << l_pEnt->d_name << std::endl;
                     if (NULL != m_pAnalyser)
                     {
                         std::string l_File = std::string(a_pDir).append("\\").append(l_pEnt->d_name);
