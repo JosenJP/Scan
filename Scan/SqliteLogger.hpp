@@ -14,9 +14,10 @@ public:
 
     void Log(const char* a_pParent, const char* a_pChild) override;
     void Log(const char* a_pStr) override;
-    int ExecSql(const char* a_pSql);
+    void CleanByParent(const char* a_pParent) override;
 
 private:
+    int ExecSql(const char* a_pSql);
     /*int callback(void* a_pNotUsed, int a_Argc, char** a_pArgv, char** a_pColName);*/
     int OpenDB(void);
     int CreateTable(void);

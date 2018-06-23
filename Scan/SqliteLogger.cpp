@@ -23,28 +23,23 @@ SQLiteLogger::~SQLiteLogger()
 
 void SQLiteLogger::Log(const char* a_pParent, const char* a_pChild)
 {
-    OpenDB();
+
+    if (SQLITE_OK != CreateTable())
+    {
+        return;
+    }
 
     if ((NULL != m_pDB) && (m_TableName.size() > 0))
     {
-        if (SQLITE_OK != CreateTable())
-        {
-            return;
-        }
-
-        std::string l_DelSQL = std::string("Delete from ").append(m_TableName).append(" where Parent = \'").append(a_pParent).append("\';");
-        ExecSql(l_DelSQL.c_str());
-
         std::string l_InsertSQL = std::string("Insert into ").append(m_TableName).append(" (Child, Parent) ").append("VALUES (\'").append(a_pChild).append("\',\'").append(a_pParent).append("\');");
         ExecSql(l_InsertSQL.c_str());
 
-        std::cout << "Child: " << a_pChild << " Parent: " << a_pParent << std::endl;
+        //std::cout << "Child: " << a_pChild << " Parent: " << a_pParent << std::endl;
     }
 }
 
 void SQLiteLogger::Log(const char* a_pStr)
 {
-
 }
 
 int SQLiteLogger::OpenDB()
@@ -88,11 +83,20 @@ int SQLiteLogger::ExecSql(const char* a_pSql)
 
 int SQLiteLogger::CreateTable(void)
 {
-    if ((NULL != m_pDB) && (m_TableName.size() > 0))
+    if (m_TableName.size() > 0)
     {
         std::string l_SQL = std::string("CREATE TABLE IF NOT EXISTS ").append(m_TableName).append("( Child CHAR(200) NOT NULL, Parent CHAR(200) NOT NULL);");
         return ExecSql(l_SQL.c_str());
     }
 
     return 0;
+}
+
+void SQLiteLogger::CleanByParent(const char* a_pParent)
+{
+    if (m_TableName.size() > 0)
+    {
+        std::string l_DelSQL = std::string("Delete from ").append(m_TableName).append(" where Parent = \'").append(a_pParent).append("\';");
+        ExecSql(l_DelSQL.c_str());
+    }
 }

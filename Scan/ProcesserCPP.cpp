@@ -32,7 +32,10 @@ void ProcesserCPP::Process(const char* a_pFile, const char* a_pFileName)
     if (!l_InFile)
     {
         std::cout << "Unable to open file: " << a_pFile << std::endl;
+        return;
     }
+
+    m_pLogger->CleanByParent(a_pFileName);
 
     while (l_InFile.good())
     {

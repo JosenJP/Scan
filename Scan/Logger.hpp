@@ -12,6 +12,7 @@ public:
 
     virtual void Log(const char* a_pParent, const char* a_pChild);
     virtual void Log(const char* a_pStr);
+    virtual void CleanByParent(const char* a_pParent) {}
 
 private:
     std::ofstream m_Output;

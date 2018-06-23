@@ -23,6 +23,7 @@
     <ProjectGuid>{A40001DA-9E87-4777-93F5-248174789462}</ProjectGuid>
     <RootNamespace>ScanDir</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <ProjectName>Scan</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -130,12 +131,14 @@
     <ClCompile Include="FileInfo.cpp" />
     <ClCompile Include="FilterBuild.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="Param.cpp" />
     <ClCompile Include="ProcesserCPP.cpp" />
     <ClCompile Include="ProcesserHeader.cpp" />
     <ClCompile Include="ProcesserPROJ.cpp" />
     <ClCompile Include="Scaner.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Scan.cpp" />
     <ClCompile Include="SqliteLogger.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnalyserBase.hpp" />
@@ -144,12 +147,14 @@
     <ClInclude Include="FilterBase.hpp" />
     <ClInclude Include="FilterBuild.hpp" />
     <ClInclude Include="Logger.hpp" />
+    <ClInclude Include="Param.hpp" />
     <ClInclude Include="ProcesserBase.hpp" />
     <ClInclude Include="ProcesserCPP.hpp" />
     <ClInclude Include="ProcesserHeader.hpp" />
     <ClInclude Include="ProcesserPROJ.hpp" />
     <ClInclude Include="Scaner.hpp" />
     <ClInclude Include="SqliteLogger.hpp" />
+    <ClInclude Include="Timer.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
