@@ -24,7 +24,7 @@ private:
     
     std::string m_DBPath;
     std::string m_TableName;
-    sqlite3* m_pDB = NULL;
+    static sqlite3* m_pDB;
 };
 
 #endif

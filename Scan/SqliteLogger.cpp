@@ -7,6 +7,8 @@ static int callback(void* a_pNotUsed, int a_Argc, char** a_pArgv, char** a_pColN
     return 0;
 }
 
+sqlite3* SQLiteLogger::m_pDB = NULL;
+
 SQLiteLogger::SQLiteLogger(std::string a_DBPath, std::string a_TableName)
 {
     m_DBPath = a_DBPath;

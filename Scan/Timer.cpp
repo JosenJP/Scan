@@ -17,7 +17,7 @@ void Timer::End(void)
 void Timer::Duration(void)
 {
     float l_Seconds = (m_EndTime - m_StartTime) / CLOCKS_PER_SEC;
-    float l_Hours = l_Seconds / 360.0;
+    float l_Hours = l_Seconds / 3600.0;
 
     std::cout << "Execution Time: " << std::endl
         << "Seconds: " << l_Seconds << "(s)" << std::endl

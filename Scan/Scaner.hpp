@@ -4,11 +4,6 @@
 class FilterBase;
 class AnalyserBase;
 
-enum MyEnum
-{
-
-};
-
 class Scaner
 {
 public:
