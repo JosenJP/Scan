@@ -7,13 +7,15 @@ enum FileType
     CPP     = 1,
     H       = 2,
     HPP     = 3,
-    PROJ    = 4
+    PROJ    = 4,
+    C       = 5
 };
 
 extern const char* CURRENT_DIR;
 extern const char* PARENT_DIR;
 
 extern const char* EXTENSION_CPP;
+extern const char* EXTENSION_C;
 extern const char* EXTENSION_H;
 extern const char* EXTENSION_HPP;
 extern const char* EXTENSION_PROJ;

@@ -84,6 +84,7 @@ void AnalyserBuild::Process(const char* a_pFile, FileType a_FileType, const char
         }
         break;
     }
+    case C:
     case CPP:
     {
         if (NULL != m_pProcCPP)

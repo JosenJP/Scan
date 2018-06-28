@@ -23,6 +23,10 @@ bool FilterBuild::IsGoodFile(const char* a_pFileName, FileType& a_FileType /* ou
     {
         a_FileType = FileType::PROJ;
     }
+    else if (CheckExtension(a_pFileName, EXTENSION_C))
+    {
+        a_FileType = FileType::C;
+    }
     else
     {
         a_FileType = FileType::UNKNOW;

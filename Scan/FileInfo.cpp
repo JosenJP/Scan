@@ -4,6 +4,7 @@ const char* CURRENT_DIR  = ".";
 const char* PARENT_DIR   = "..";
 
 const char* EXTENSION_CPP    = ".cpp";
+const char* EXTENSION_C      = ".c";
 const char* EXTENSION_H      = ".h";
 const char* EXTENSION_HPP    = ".hpp";
 const char* EXTENSION_PROJ   = ".vcxproj";
