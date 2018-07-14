@@ -1,5 +1,6 @@
 
-#include<iostream>
+#include <iostream>
+#include <algorithm>
 #include "SqliteLogger.hpp"
 
 static int callback(void* a_pNotUsed, int a_Argc, char** a_pArgv, char** a_pColName)
@@ -38,7 +39,13 @@ void SQLiteLogger::Log(const char* a_pParent, const char* a_pChild)
 
     if ((NULL != m_pDB) && (m_TableName.size() > 0))
     {
-        std::string l_InsertSQL = std::string("Insert into ").append(m_TableName).append(" (Child, Parent) ").append("VALUES (\'").append(a_pChild).append("\',\'").append(a_pParent).append("\');");
+        std::string l_LowerChild(a_pChild);
+        std::transform(l_LowerChild.begin(), l_LowerChild.end(), l_LowerChild.begin(), ::tolower);
+
+        std::string l_LowerParent(a_pParent);
+        std::transform(l_LowerParent.begin(), l_LowerParent.end(), l_LowerParent.begin(), ::tolower);
+
+        std::string l_InsertSQL = std::string("Insert into ").append(m_TableName).append(" (Child, Parent) ").append("VALUES (\'").append(l_LowerChild).append("\',\'").append(l_LowerParent).append("\');");
         ExecSql(l_InsertSQL.c_str());
 
         //std::cout << "Child: " << a_pChild << " Parent: " << a_pParent << std::endl;
@@ -108,7 +115,10 @@ void SQLiteLogger::CleanByParent(const char* a_pParent)
 
     if (m_TableName.size() > 0)
     {
-        std::string l_DelSQL = std::string("Delete from ").append(m_TableName).append(" where Parent = \'").append(a_pParent).append("\';");
+        std::string l_LowerParent(a_pParent);
+        std::transform(l_LowerParent.begin(), l_LowerParent.end(), l_LowerParent.begin(), ::tolower);
+
+        std::string l_DelSQL = std::string("Delete from ").append(m_TableName).append(" where Parent = \'").append(l_LowerParent).append("\';");
         ExecSql(l_DelSQL.c_str());
     }
 }
