@@ -16,6 +16,11 @@ public:
     void Log(const char* a_pStr) override;
     void CleanByParent(const char* a_pParent) override;
 
+    void UpdateTableName(std::string a_TableName) { m_TableName = a_TableName; }
+    std::string GetCurrTablename(void) { return m_TableName;  }
+
+    static void FreeDB(void);
+
 private:
     int ExecSql(const char* a_pSql);
     /*int callback(void* a_pNotUsed, int a_Argc, char** a_pArgv, char** a_pColName);*/

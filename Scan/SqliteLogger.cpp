@@ -9,6 +9,14 @@ static int callback(void* a_pNotUsed, int a_Argc, char** a_pArgv, char** a_pColN
 
 sqlite3* SQLiteLogger::m_pDB = NULL;
 
+void SQLiteLogger::FreeDB(void)
+{
+    if (NULL != m_pDB)
+    {
+        sqlite3_close(m_pDB);
+    }
+}
+
 SQLiteLogger::SQLiteLogger(std::string a_DBPath, std::string a_TableName)
 {
     m_DBPath = a_DBPath;
@@ -17,10 +25,7 @@ SQLiteLogger::SQLiteLogger(std::string a_DBPath, std::string a_TableName)
 
 SQLiteLogger::~SQLiteLogger()
 {
-    if (NULL != m_pDB)
-    {
-        sqlite3_close(m_pDB);
-    }
+
 }
 
 void SQLiteLogger::Log(const char* a_pParent, const char* a_pChild)
@@ -96,6 +101,11 @@ int SQLiteLogger::CreateTable(void)
 
 void SQLiteLogger::CleanByParent(const char* a_pParent)
 {
+    if (SQLITE_OK != CreateTable())
+    {
+        return;
+    }
+
     if (m_TableName.size() > 0)
     {
         std::string l_DelSQL = std::string("Delete from ").append(m_TableName).append(" where Parent = \'").append(a_pParent).append("\';");

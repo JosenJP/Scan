@@ -34,7 +34,10 @@ void ProcesserHeader::Process(const char* a_pFile, const char* a_pFileName)
         return;
     }
 
-    m_pLogger->CleanByParent(a_pFileName);
+    if (NULL != m_pLogger)
+    {
+        m_pLogger->CleanByParent(a_pFileName);
+    }
 
     while (l_InFile.good())
     {

@@ -10,6 +10,9 @@ public:
     ~ProcesserPROJ();
 
     void Process(const char* a_pFile, const char* a_pFileName) override;
+    bool GetCompileFile(const char* a_pFile, std::string a_Line);
+    bool GetLibName(const char* a_pFile, std::string a_Line);
+    bool GetLib(const char* a_pFile, std::string a_Line);
 
 private:
     void Init(void);
