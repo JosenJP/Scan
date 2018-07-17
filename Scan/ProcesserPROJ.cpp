@@ -96,11 +96,11 @@ bool ProcesserPROJ::GetCompileFile(const char* a_pFile, std::string a_Line)
         std::string l_CppFile = "";
 
         //<ClCompile Include="Source.cpp" />
-        l_EndPos = a_Line.find(STR_COMPILE_ITEM_END, l_StartPos + 1, strlen(STR_COMPILE_ITEM_END));
+        l_EndPos = a_Line.find(STR_QUOTE, l_StartPos + 1, strlen(STR_QUOTE));
 
         if ((std::string::npos != l_StartPos) && (l_EndPos > l_StartPos))
         {
-            l_CppFile = a_Line.substr(l_StartPos + 1, ((l_EndPos - 2) - (l_StartPos + 1))); //-2 is to remove the space at the end and " .
+            l_CppFile = a_Line.substr(l_StartPos + 1, (l_EndPos- (l_StartPos + 1)));
 
             //std::cout << "Project " << a_pFileName << " contains " << l_CppFile << std::endl;
 
