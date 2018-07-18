@@ -27,8 +27,10 @@ void ProcesserPROJ::Process(const char* a_pFile, const char* a_pFileName)
 {
     std::ifstream l_InFile;
     std::string l_Line;
-    std::size_t l_Pos = std::string::npos;
-    bool l_IsLib = false;
+    std::size_t l_Pos   = std::string::npos;
+    bool l_IsLib        = false;
+    bool l_GetLib       = false;
+    bool l_GetLibName   = false;
 
     l_InFile.open(a_pFile);
 
@@ -66,18 +68,23 @@ void ProcesserPROJ::Process(const char* a_pFile, const char* a_pFileName)
             continue;
         }
 
-        if (l_IsLib)
+        if (l_IsLib && !l_GetLibName)
         {
             //Get the lib name for a static library.
             if (GetLibName(a_pFile, l_Line))
             {
+                l_GetLibName = true;
                 continue;
             }
         }
 
-        if (GetLib(a_pFile, l_Line))
+        if (!l_GetLib)
         {
-            continue;
+            if (GetLib(a_pFile, l_Line))
+            {
+                l_GetLib = true;
+                continue;
+            }
         }
     }
     l_InFile.close();
