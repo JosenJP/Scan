@@ -44,6 +44,7 @@ void SQLiteLogger::Log(const char* a_pParent, const char* a_pChild)
 
         std::string l_LowerParent(a_pParent);
         std::transform(l_LowerParent.begin(), l_LowerParent.end(), l_LowerParent.begin(), ::tolower);
+        RemoveDriveOfStr(l_LowerParent);
 
         std::string l_InsertSQL = std::string("Insert into ").append(m_TableName).append(" (Child, Parent) ").append("VALUES (\'").append(l_LowerChild).append("\',\'").append(l_LowerParent).append("\');");
         ExecSql(l_InsertSQL.c_str());
@@ -122,3 +123,13 @@ void SQLiteLogger::CleanByParent(const char* a_pParent)
         ExecSql(l_DelSQL.c_str());
     }
 }
+
+void SQLiteLogger::RemoveDriveOfStr(std::string& a_rString)
+{
+    std::size_t l_DriveStartPos = a_rString.find(':');
+    if (l_DriveStartPos != std::string::npos)
+    {
+        a_rString = a_rString.substr(l_DriveStartPos + 1, a_rString.size() - (l_DriveStartPos + 1));
+    }
+}
+
