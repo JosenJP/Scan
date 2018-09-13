@@ -3,6 +3,8 @@
 #include <algorithm>
 #include "SqliteLogger.hpp"
 
+const char* TStr = "\\rks\\";
+
 static int callback(void* a_pNotUsed, int a_Argc, char** a_pArgv, char** a_pColName)
 {
     return 0;
@@ -129,7 +131,11 @@ void SQLiteLogger::RemoveDriveOfStr(std::string& a_rString)
     std::size_t l_DriveStartPos = a_rString.find(':');
     if (l_DriveStartPos != std::string::npos)
     {
-        a_rString = a_rString.substr(l_DriveStartPos + 1, a_rString.size() - (l_DriveStartPos + 1));
+        std::size_t l_TStrPos = a_rString.find(TStr);
+        if (std::string::npos != l_TStrPos)
+        {
+            a_rString = a_rString.substr(l_TStrPos + (strlen(TStr)) - 1, a_rString.size() - (strlen(TStr) - l_TStrPos - 1));
+        }
     }
 }
 
