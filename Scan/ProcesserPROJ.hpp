@@ -16,6 +16,10 @@ public:
 
 private:
     void Init(void);
+    bool LogCompileFile(std::size_t a_Pos,
+                        const char* a_CompileFileType,
+                        std::string a_Line,
+                        const char* a_pFile);
 
 };
 

@@ -34,6 +34,7 @@ extern const char* STR_RIGHT_BRACKET;
 extern const char* STR_RIGHT_ROUND_BRACKET;
 extern const char* STR_QUOTE;
 extern const char* STR_COMPILE_ITEM_CPP;
+extern const char* STR_COMPILE_ITEM_RC;
 extern const char* STR_COMPILE_ITEM_END;
 extern const char* STR_LIB_FLAG;
 extern const char* STR_OUTPUT_FILE_START;

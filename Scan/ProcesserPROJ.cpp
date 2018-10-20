@@ -98,29 +98,45 @@ bool ProcesserPROJ::GetCompileFile(const char* a_pFile, std::string a_Line)
     l_Pos = a_Line.find(STR_COMPILE_ITEM_CPP);
     if (std::string::npos != l_Pos)
     {
-        std::size_t l_StartPos = l_Pos + strlen(STR_COMPILE_ITEM_CPP);
-        std::size_t l_EndPos = std::string::npos;
-        std::string l_CppFile = "";
+        l_IsGot = LogCompileFile(l_Pos, STR_COMPILE_ITEM_CPP, a_Line, a_pFile);
+    }
 
-        //<ClCompile Include="Source.cpp" />
-        l_EndPos = a_Line.find(STR_QUOTE, l_StartPos + 1, strlen(STR_QUOTE));
-
-        if ((std::string::npos != l_StartPos) && (l_EndPos > l_StartPos))
-        {
-            l_CppFile = a_Line.substr(l_StartPos + 1, (l_EndPos- (l_StartPos + 1)));
-
-            //std::cout << "Project " << a_pFileName << " contains " << l_CppFile << std::endl;
-
-            if (NULL != m_pLogger)
-            {
-                ((SQLiteLogger*)m_pLogger)->UpdateTableName(TBL_PROJECT);
-                m_pLogger->Log(a_pFile, l_CppFile.c_str()); // CPP | Proj
-            }
-        }
-        l_IsGot = true;;
+    l_Pos = a_Line.find(STR_COMPILE_ITEM_RC);
+    if (std::string::npos != l_Pos)
+    {
+        l_IsGot = LogCompileFile(l_Pos, STR_COMPILE_ITEM_RC, a_Line, a_pFile);
     }
 
     return l_IsGot;
+}
+
+bool ProcesserPROJ::LogCompileFile(std::size_t a_Pos,
+                                   const char* a_CompileFileType,
+                                   std::string a_Line,
+                                   const char* a_pFile)
+{
+    std::size_t l_StartPos = a_Pos + strlen(a_CompileFileType);
+    std::size_t l_EndPos = std::string::npos;
+    std::string l_CompileFile = "";
+
+    //<ClCompile Include="Source.cpp" />
+    //<ResourceCompile Include="PFSBIO.rc" />
+    l_EndPos = a_Line.find(STR_QUOTE, l_StartPos + 1, strlen(STR_QUOTE));
+
+    if ((std::string::npos != l_StartPos) && (l_EndPos > l_StartPos))
+    {
+        l_CompileFile = a_Line.substr(l_StartPos + 1, (l_EndPos - (l_StartPos + 1)));
+
+        //std::cout << "Project " << a_pFileName << " contains " << l_CppFile << std::endl;
+
+        if (NULL != m_pLogger)
+        {
+            ((SQLiteLogger*)m_pLogger)->UpdateTableName(TBL_PROJECT);
+            m_pLogger->Log(a_pFile, l_CompileFile.c_str()); // CPP | Proj
+        }
+    }
+
+    return true;
 }
 
 bool ProcesserPROJ::GetLibName(const char* a_pFile, std::string a_Line)

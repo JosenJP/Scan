@@ -23,6 +23,7 @@ const char* STR_RIGHT_BRACKET           = ">";
 const char* STR_RIGHT_ROUND_BRACKET     = ")";
 const char* STR_QUOTE                   = "\"";
 const char* STR_COMPILE_ITEM_CPP        = "<ClCompile Include=";
+const char* STR_COMPILE_ITEM_RC         = "<ResourceCompile Include=";
 const char* STR_COMPILE_ITEM_END        = "/>";
 const char* STR_LIB_FLAG                = "StaticLibrary";
 const char* STR_OUTPUT_FILE_START       = "<OutputFile>";
