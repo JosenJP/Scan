@@ -8,7 +8,9 @@ enum FileType
     H       = 2,
     HPP     = 3,
     PROJ    = 4,
-    C       = 5
+    C       = 5,
+    HR      = 6,
+    CR      = 7
 };
 
 extern const char* DB_NAME;
@@ -25,8 +27,10 @@ extern const char* EXTENSION_CPP;
 extern const char* EXTENSION_C;
 extern const char* EXTENSION_H;
 extern const char* EXTENSION_HPP;
+extern const char* EXTENSION_HR;
 extern const char* EXTENSION_PROJ;
 extern const char* EXTENSION_LIB;
+extern const char* EXTENSION_CR;
 
 extern const char* STR_INCLUDE;
 extern const char* STR_LEFT_BRACKET;

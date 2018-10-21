@@ -19,6 +19,10 @@ bool FilterBuild::IsGoodFile(const char* a_pFileName, FileType& a_FileType /* ou
     {
         a_FileType = FileType::HPP;
     }
+    else if (CheckExtension(a_pFileName, EXTENSION_HR))
+    {
+        a_FileType = FileType::HR;
+    }
     else if (CheckExtension(a_pFileName, EXTENSION_PROJ))
     {
         a_FileType = FileType::PROJ;
@@ -26,6 +30,10 @@ bool FilterBuild::IsGoodFile(const char* a_pFileName, FileType& a_FileType /* ou
     else if (CheckExtension(a_pFileName, EXTENSION_C))
     {
         a_FileType = FileType::C;
+    }
+    else if (CheckExtension(a_pFileName, EXTENSION_CR))
+    {
+        a_FileType = FileType::CR;
     }
     else
     {

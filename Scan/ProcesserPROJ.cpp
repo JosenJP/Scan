@@ -20,7 +20,7 @@ ProcesserPROJ::~ProcesserPROJ()
 
 void ProcesserPROJ::Init(void)
 {
-    m_pLogFileName = "Project.txt";
+    //m_pLogFileName = "Project.txt";
 }
 
 void ProcesserPROJ::Process(const char* a_pFile, const char* a_pFileName)

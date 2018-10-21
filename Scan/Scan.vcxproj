@@ -133,6 +133,7 @@
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Param.cpp" />
     <ClCompile Include="ProcesserCPP.cpp" />
+    <ClCompile Include="ProcesserCR.cpp" />
     <ClCompile Include="ProcesserHeader.cpp" />
     <ClCompile Include="ProcesserPROJ.cpp" />
     <ClCompile Include="Scaner.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Param.hpp" />
     <ClInclude Include="ProcesserBase.hpp" />
     <ClInclude Include="ProcesserCPP.hpp" />
+    <ClInclude Include="ProcesserCR.hpp" />
     <ClInclude Include="ProcesserHeader.hpp" />
     <ClInclude Include="ProcesserPROJ.hpp" />
     <ClInclude Include="Scaner.hpp" />

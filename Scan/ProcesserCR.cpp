@@ -1,26 +1,12 @@
+
 #include <fstream>
 #include <string>
-#include <iostream>
 
-#include "ProcesserHeader.hpp"
+#include "ProcesserCR.hpp"
 #include "FileInfo.hpp"
 #include "Logger.hpp"
 
-ProcesserHeader::ProcesserHeader()
-{
-    Init();
-}
-
-ProcesserHeader::~ProcesserHeader()
-{
-}
-
-void ProcesserHeader::Init(void)
-{
-    //m_pLogFileName = "Header.txt";
-}
-
-void ProcesserHeader::Process(const char* a_pFile, const char* a_pFileName)
+void ProcesserCR::Process(const char* a_pFile, const char* a_pFileName)
 {
     std::ifstream l_InFile;
     std::string l_Line;

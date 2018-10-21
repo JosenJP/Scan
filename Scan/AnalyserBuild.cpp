@@ -79,6 +79,7 @@ void AnalyserBuild::Process(const char* a_pFile, FileType a_FileType, const char
     {
     case H:
     case HPP:
+    case HR:
     {
         if (NULL != m_pProcHeader)
         {

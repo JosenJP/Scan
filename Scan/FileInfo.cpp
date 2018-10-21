@@ -14,8 +14,10 @@ const char* EXTENSION_CPP    = ".cpp";
 const char* EXTENSION_C      = ".c";
 const char* EXTENSION_H      = ".h";
 const char* EXTENSION_HPP    = ".hpp";
+const char* EXTENSION_HR     = ".hr";
 const char* EXTENSION_PROJ   = ".vcxproj";
 const char* EXTENSION_LIB    = ".lib";
+const char* EXTENSION_CR     = ".cr";
 
 const char* STR_INCLUDE                 = "#include";
 const char* STR_LEFT_BRACKET            = "<";

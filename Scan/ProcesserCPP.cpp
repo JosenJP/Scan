@@ -18,7 +18,7 @@ ProcesserCPP::~ProcesserCPP()
 
 void ProcesserCPP::Init(void)
 {
-    m_pLogFileName = "CPP.txt";
+    //m_pLogFileName = "CPP.txt";
 }
 
 void ProcesserCPP::Process(const char* a_pFile, const char* a_pFileName)
