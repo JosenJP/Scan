@@ -10,7 +10,7 @@ enum FileType
     PROJ    = 4,
     C       = 5,
     HR      = 6,
-    CR      = 7
+    RC      = 7
 };
 
 extern const char* DB_NAME;
@@ -19,6 +19,8 @@ extern const char* TBL_CPP;
 extern const char* TBL_HEADER;
 extern const char* TBL_LIB;
 extern const char* TBL_LIB_NAME;
+extern const char* TBL_HR_RC;
+extern const char* TBL_RC_RC;
 
 extern const char* CURRENT_DIR;
 extern const char* PARENT_DIR;
@@ -30,7 +32,7 @@ extern const char* EXTENSION_HPP;
 extern const char* EXTENSION_HR;
 extern const char* EXTENSION_PROJ;
 extern const char* EXTENSION_LIB;
-extern const char* EXTENSION_CR;
+extern const char* EXTENSION_RC;
 
 extern const char* STR_INCLUDE;
 extern const char* STR_LEFT_BRACKET;

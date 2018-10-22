@@ -8,6 +8,7 @@
 class ProcesserHeader;
 class ProcesserCPP;
 class ProcesserPROJ;
+class ProcesserRC;
 class Logger;
 
 class AnalyserBuild : public AnalyserBase
@@ -21,6 +22,7 @@ public:
 
 protected:
     void GetProcessers(void) override;
+    void SetLogger(void);
 
 private:
     void Init(void);
@@ -32,10 +34,12 @@ private:
     ProcesserHeader* m_pProcHeader;
     ProcesserCPP* m_pProcCPP;
     ProcesserPROJ* m_pProcPROJ;
+    ProcesserRC* m_ProcRC;
 
     Logger* m_pLoggerHeader;
     Logger* m_pLoggerCPP;
     Logger* m_pLoggerPROJ;
+    Logger* m_pLoggerRC;
 };
 
 #endif // !ANALYSER_BUILD_HPP

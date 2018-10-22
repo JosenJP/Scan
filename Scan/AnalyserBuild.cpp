@@ -5,7 +5,9 @@
 #include "ProcesserHeader.hpp"
 #include "ProcesserCPP.hpp"
 #include "ProcesserPROJ.hpp"
+#include "ProcesserRC.hpp"
 #include "SqliteLogger.hpp"
+
 
 //const char* DB_NAME         = "DependencyLib.db";
 //const char* TBL_PROJECT     = "Project";
@@ -56,6 +58,18 @@ AnalyserBuild::~AnalyserBuild()
         delete m_pLoggerPROJ;
         m_pLoggerPROJ = NULL;
     }
+
+    if (NULL != m_ProcRC)
+    {
+        delete m_ProcRC;
+        m_ProcRC = NULL;
+    }
+
+    if (NULL != m_pLoggerRC)
+    {
+        delete m_pLoggerRC;
+        m_pLoggerRC = NULL;
+    }
 }
 
 void AnalyserBuild::Init(void)
@@ -63,10 +77,12 @@ void AnalyserBuild::Init(void)
     m_pProcHeader   = NULL;
     m_pProcCPP      = NULL;
     m_pProcPROJ     = NULL;
+    m_ProcRC        = NULL;
 
     m_pLoggerHeader = NULL;
     m_pLoggerCPP    = NULL;
     m_pLoggerPROJ   = NULL;
+    m_pLoggerRC     = NULL;
 }
 
 void AnalyserBuild::Process(const char* a_pFile, FileType a_FileType, const char* a_FileName)
@@ -102,6 +118,14 @@ void AnalyserBuild::Process(const char* a_pFile, FileType a_FileType, const char
         {
             l_pProcesser = m_pProcPROJ;
 
+        }
+        break;
+    }
+    case RC:
+    {
+        if (NULL != m_ProcRC)
+        {
+            l_pProcesser = m_ProcRC;
         }
         break;
     }
@@ -142,38 +166,58 @@ void AnalyserBuild::GetProcessers(void)
         m_pProcPROJ = new ProcesserPROJ();
     }
 
+    if (NULL == m_ProcRC)
+    {
+        m_ProcRC = new ProcesserRC();
+    }
+
     //Set logger for processer
     if (m_LogPath.length() > 0)
     {
-        std::string l_DBPath = m_LogPath + std::string("\\") + std::string(DB_NAME);
-        if (NULL != m_pProcHeader)
-        {
-            if (NULL == m_pLoggerHeader)
-            {
-                m_pLoggerHeader = new SQLiteLogger(l_DBPath.c_str(), TBL_HEADER);
-            }
+        SetLogger();
+    }
+}
 
-            m_pProcHeader->SetLogger(m_pLoggerHeader);
+void AnalyserBuild::SetLogger()
+{
+    std::string l_DBPath = m_LogPath + std::string("\\") + std::string(DB_NAME);
+    if (NULL != m_pProcHeader)
+    {
+        if (NULL == m_pLoggerHeader)
+        {
+            m_pLoggerHeader = new SQLiteLogger(l_DBPath.c_str(), TBL_HEADER);
         }
 
-        if (NULL != m_pProcCPP)
-        {
-            if (NULL == m_pLoggerCPP)
-            {
-                m_pLoggerCPP = new SQLiteLogger(l_DBPath.c_str(), TBL_CPP);
-            }
+        m_pProcHeader->SetLogger(m_pLoggerHeader);
+    }
 
-            m_pProcCPP->SetLogger(m_pLoggerCPP);
+    if (NULL != m_pProcCPP)
+    {
+        if (NULL == m_pLoggerCPP)
+        {
+            m_pLoggerCPP = new SQLiteLogger(l_DBPath.c_str(), TBL_CPP);
         }
 
-        if (NULL != m_pProcPROJ)
-        {
-            if (NULL == m_pLoggerPROJ)
-            {
-                m_pLoggerPROJ = new SQLiteLogger(l_DBPath.c_str(), TBL_PROJECT);
-            }
+        m_pProcCPP->SetLogger(m_pLoggerCPP);
+    }
 
-            m_pProcPROJ->SetLogger(m_pLoggerPROJ);
+    if (NULL != m_pProcPROJ)
+    {
+        if (NULL == m_pLoggerPROJ)
+        {
+            m_pLoggerPROJ = new SQLiteLogger(l_DBPath.c_str(), TBL_PROJECT);
         }
+
+        m_pProcPROJ->SetLogger(m_pLoggerPROJ);
+    }
+
+    if (NULL != m_ProcRC)
+    {
+        if (NULL == m_pLoggerRC)
+        {
+            m_pLoggerRC = new SQLiteLogger(l_DBPath.c_str(), TBL_HR_RC);
+        }
+
+        m_ProcRC->SetLogger(m_pLoggerRC);
     }
 }

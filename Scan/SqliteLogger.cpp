@@ -139,3 +139,11 @@ void SQLiteLogger::RemoveDriveOfStr(std::string& a_rString)
     }
 }
 
+void SQLiteLogger::SwtichTable(Logger* a_pLogger, const char* a_pTableName)
+{
+    if (NULL != a_pLogger)
+    {
+        ((SQLiteLogger*)a_pLogger)->UpdateTableName(a_pTableName);
+    }
+}
+

@@ -2,11 +2,12 @@
 #include <fstream>
 #include <string>
 
-#include "ProcesserCR.hpp"
+#include "ProcesserRC.hpp"
 #include "FileInfo.hpp"
-#include "Logger.hpp"
+#include "SqliteLogger.hpp"
+#include "ExtensionHelper.hpp"
 
-void ProcesserCR::Process(const char* a_pFile, const char* a_pFileName)
+void ProcesserRC::Process(const char* a_pFile, const char* a_pFileName)
 {
     std::ifstream l_InFile;
     std::string l_Line;
@@ -22,6 +23,10 @@ void ProcesserCR::Process(const char* a_pFile, const char* a_pFileName)
 
     if (NULL != m_pLogger)
     {
+        SQLiteLogger::SwtichTable(m_pLogger, TBL_HR_RC);
+        m_pLogger->CleanByParent(a_pFileName);
+
+        SQLiteLogger::SwtichTable(m_pLogger, TBL_RC_RC);
         m_pLogger->CleanByParent(a_pFileName);
     }
 
@@ -56,6 +61,14 @@ void ProcesserCR::Process(const char* a_pFile, const char* a_pFileName)
 
                 if (NULL != m_pLogger)
                 {
+                    if (ExtensionHelper::CheckExtension(l_Header.c_str(), EXTENSION_RC))
+                    {
+                        SQLiteLogger::SwtichTable(m_pLogger, TBL_RC_RC);
+                    }
+                    else
+                    {
+                        SQLiteLogger::SwtichTable(m_pLogger, TBL_HR_RC);
+                    }
                     m_pLogger->Log(a_pFileName, l_Header.c_str());
                 }
             }
@@ -63,4 +76,5 @@ void ProcesserCR::Process(const char* a_pFile, const char* a_pFileName)
     }
     l_InFile.close();
 }
+
 

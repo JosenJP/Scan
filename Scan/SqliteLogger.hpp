@@ -19,6 +19,8 @@ public:
     void UpdateTableName(std::string a_TableName) { m_TableName = a_TableName; }
     std::string GetCurrTablename(void) { return m_TableName;  }
 
+    static void SwtichTable(Logger* a_pLogger, const char* a_pTableName);
+
     static void FreeDB(void);
 
 private:

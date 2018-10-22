@@ -12,7 +12,7 @@ public:
     void Process(const char* a_pFile, const char* a_pFileName) override;
 
 private:
-    void Init(void){};
+    void Init(void);
 
 };
 

@@ -3,11 +3,11 @@
 
 #include "ProcesserBase.hpp"
 
-class ProcesserCR : public ProcesserBase
+class ProcesserRC : public ProcesserBase
 {
 public:
-    ProcesserCR() { Init(); };
-    ~ProcesserCR() {};
+    ProcesserRC() { Init(); };
+    ~ProcesserRC() {};
 
     void Process(const char* a_pFile, const char* a_pFileName) override;
 

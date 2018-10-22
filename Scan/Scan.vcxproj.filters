@@ -25,6 +25,9 @@
     <Filter Include="Logger">
       <UniqueIdentifier>{861a1b1e-0a2f-4c65-b94a-e373d7b63b99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Helper">
+      <UniqueIdentifier>{582d6e6f-8e28-474c-ba70-f001e634361c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scaner.cpp">
@@ -63,7 +66,10 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ProcesserCR.cpp">
+    <ClCompile Include="ExtensionHelper.cpp">
+      <Filter>Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcesserRC.cpp">
       <Filter>Processers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,7 +116,10 @@
     <ClInclude Include="Timer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ProcesserCR.hpp">
+    <ClInclude Include="ExtensionHelper.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProcesserRC.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,6 +6,8 @@ const char* TBL_CPP         = "CPP";
 const char* TBL_HEADER      = "Header";
 const char* TBL_LIB         = "Lib";
 const char* TBL_LIB_NAME    = "LibName";
+const char* TBL_HR_RC       = "HrRc";
+const char* TBL_RC_RC       = "RcRc";
 
 const char* CURRENT_DIR  = ".";
 const char* PARENT_DIR   = "..";
@@ -17,7 +19,7 @@ const char* EXTENSION_HPP    = ".hpp";
 const char* EXTENSION_HR     = ".hr";
 const char* EXTENSION_PROJ   = ".vcxproj";
 const char* EXTENSION_LIB    = ".lib";
-const char* EXTENSION_CR     = ".cr";
+const char* EXTENSION_RC     = ".rc";
 
 const char* STR_INCLUDE                 = "#include";
 const char* STR_LEFT_BRACKET            = "<";

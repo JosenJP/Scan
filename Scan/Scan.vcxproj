@@ -128,12 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AnalyserBuild.cpp" />
+    <ClCompile Include="ExtensionHelper.cpp" />
     <ClCompile Include="FileInfo.cpp" />
     <ClCompile Include="FilterBuild.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Param.cpp" />
     <ClCompile Include="ProcesserCPP.cpp" />
-    <ClCompile Include="ProcesserCR.cpp" />
+    <ClCompile Include="ProcesserRC.cpp" />
     <ClCompile Include="ProcesserHeader.cpp" />
     <ClCompile Include="ProcesserPROJ.cpp" />
     <ClCompile Include="Scaner.cpp" />
@@ -144,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="AnalyserBase.hpp" />
     <ClInclude Include="AnalyserBuild.hpp" />
+    <ClInclude Include="ExtensionHelper.hpp" />
     <ClInclude Include="FileInfo.hpp" />
     <ClInclude Include="FilterBase.hpp" />
     <ClInclude Include="FilterBuild.hpp" />
@@ -151,7 +153,7 @@
     <ClInclude Include="Param.hpp" />
     <ClInclude Include="ProcesserBase.hpp" />
     <ClInclude Include="ProcesserCPP.hpp" />
-    <ClInclude Include="ProcesserCR.hpp" />
+    <ClInclude Include="ProcesserRC.hpp" />
     <ClInclude Include="ProcesserHeader.hpp" />
     <ClInclude Include="ProcesserPROJ.hpp" />
     <ClInclude Include="Scaner.hpp" />
