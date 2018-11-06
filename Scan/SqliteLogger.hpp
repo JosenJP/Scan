@@ -29,6 +29,7 @@ private:
     /*int callback(void* a_pNotUsed, int a_Argc, char** a_pArgv, char** a_pColName);*/
     int OpenDB(void);
     int CreateTable(void);
+    bool IsExisted(const char* a_pParent, const char* a_pChild);
     
     std::string m_DBPath;
     std::string m_TableName;

@@ -1,12 +1,17 @@
 
 #include <iostream>
 #include <algorithm>
+#include <list>
+#include <sstream>
 #include "SqliteLogger.hpp"
 
 const char* TStr = "\\rks\\";
 
+std::list<std::string> g_ValueList;
+
 static int callback(void* a_pNotUsed, int a_Argc, char** a_pArgv, char** a_pColName)
 {
+    g_ValueList.push_back(a_pArgv[0]);
     return 0;
 }
 
@@ -48,9 +53,11 @@ void SQLiteLogger::Log(const char* a_pParent, const char* a_pChild)
         std::transform(l_LowerParent.begin(), l_LowerParent.end(), l_LowerParent.begin(), ::tolower);
         RemoveDriveOfStr(l_LowerParent);
 
-        std::string l_InsertSQL = std::string("Insert into ").append(m_TableName).append(" (Child, Parent) ").append("VALUES (\'").append(l_LowerChild).append("\',\'").append(l_LowerParent).append("\');");
-        ExecSql(l_InsertSQL.c_str());
-
+        if (!IsExisted(l_LowerParent.c_str(), l_LowerChild.c_str()))
+        {
+            std::string l_InsertSQL = std::string("Insert into ").append(m_TableName).append(" (Child, Parent) ").append("VALUES (\'").append(l_LowerChild).append("\',\'").append(l_LowerParent).append("\');");
+            ExecSql(l_InsertSQL.c_str());
+        }
         //std::cout << "Child: " << a_pChild << " Parent: " << a_pParent << std::endl;
     }
 }
@@ -86,11 +93,13 @@ int SQLiteLogger::ExecSql(const char* a_pSql)
     {
         char* l_pMsg = NULL;
 
+        g_ValueList.clear();
         l_Rc = sqlite3_exec(m_pDB, a_pSql, callback, NULL, &l_pMsg);
 
         if (SQLITE_OK != l_Rc)
         {
             fprintf(stderr, "SQL error: %s\n", l_pMsg);
+            fprintf(stderr, "SQL Statement: %s\n", a_pSql);
             sqlite3_free(l_pMsg);
         }
     }
@@ -102,7 +111,9 @@ int SQLiteLogger::CreateTable(void)
 {
     if (m_TableName.size() > 0)
     {
-        std::string l_SQL = std::string("CREATE TABLE IF NOT EXISTS ").append(m_TableName).append("( Child CHAR(200) NOT NULL, Parent CHAR(200) NOT NULL);");
+        std::string l_SQL = std::string("CREATE TABLE IF NOT EXISTS ").append(m_TableName).append("( Child CHAR(200) NOT NULL, Parent CHAR(200) NOT NULL,");
+        l_SQL.append(" PRIMARY KEY (Child, Parent)");
+        l_SQL.append(");");
         return ExecSql(l_SQL.c_str());
     }
 
@@ -147,3 +158,22 @@ void SQLiteLogger::SwtichTable(Logger* a_pLogger, const char* a_pTableName)
     }
 }
 
+bool SQLiteLogger::IsExisted(const char* a_pParent, const char* a_pChild)
+{
+    bool l_IsExisted = false;
+
+    std::string l_StrSelect = std::string("Select Child,Parent from ").append(m_TableName);
+    std::ostringstream l_StrWhere;
+    l_StrWhere << " Where Child = \'" << a_pChild << "\' and Parent = \'" << a_pParent << "\';";
+
+    std::string l_Query = l_StrSelect + l_StrWhere.str();
+
+    ExecSql(l_Query.c_str());
+
+    if (g_ValueList.size() > 0)
+    {
+        l_IsExisted = true;
+    }
+
+    return l_IsExisted;
+}
