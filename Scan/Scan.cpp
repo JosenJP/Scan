@@ -7,7 +7,7 @@
 
 void PrintUsage(void)
 {
-    std::cout << "Usage: Scan.exe -L<LogFilePath> -D<DiretoryOrFile>" << std::endl
+    std::cout << "Usage: Scan.exe -L<LogFilePath> -T<DiretoryOrFile>" << std::endl
         << "Currently, the tool supports to scan directory/.h/.hpp/.cpp/.c" << std::endl
         << "Example: ScanDir.exe -LD:\\Log -TE:\\Test" << std::endl
         << "         ScanDir.exe -LD:\\Log -TE:\\Test\\Test.cpp" << std::endl;
@@ -15,6 +15,7 @@ void PrintUsage(void)
 
 int main(int a_Argc, char** a_pArgv)
 {
+    system("pause");
     Timer l_Timer;
 
     Scaner l_Scaner;
