@@ -48,6 +48,7 @@ void SQLiteLogger::Log(const char* a_pParent, const char* a_pChild)
     {
         std::string l_LowerChild(a_pChild);
         std::transform(l_LowerChild.begin(), l_LowerChild.end(), l_LowerChild.begin(), ::tolower);
+        RemoveDriveOfStr(l_LowerChild);
 
         std::string l_LowerParent(a_pParent);
         std::transform(l_LowerParent.begin(), l_LowerParent.end(), l_LowerParent.begin(), ::tolower);
